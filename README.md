@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # shopping-assistant-agent
 =======
 # WalkThrough
@@ -30,7 +29,7 @@ It follows the standard layout produced by `agents-cli create`:
 
 ## `app/agent.py` Walk‑through
 ```python
-# 1️⃣ Imports & environment setup
+# 1️ Imports & environment setup
 import datetime
 from zoneinfo import ZoneInfo
 
@@ -47,14 +46,14 @@ os.environ["GOOGLE_GENAI_USE_VERTEXAI"] = "True"
 ```
 - Sets up the GCP project and forces the ADK to use Vertex AI.
 
-### 2️⃣ Helper tools
+### 2️ Helper tools
 ```python
 def get_weather(query: str) -> str: ...
 def get_current_time(query: str) -> str: ...
 ```
 These simple deterministic functions illustrate how a tool can be used inside a prompt.
 
-### 3️⃣ Discount‑code redemption tool (the new feature)
+### 3️ Discount‑code redemption tool (the new feature)
 ```python
 DISCOUNT_CODES = {"WELCOME50": 50, "SUMMER20": 20}
 redeemed_codes: set[tuple[str, str]] = set()
@@ -78,7 +77,7 @@ def redeem_discount_code(user_id: str, code: str) -> str:
 - **Stateful**: the `redeemed_codes` set lives in memory for the lifetime of the process, enforcing one‑time use.
 - **Exposed as a tool**: the function is added to the agent’s `tools` list, so LLM can call it when the user asks *“Apply my discount code WELCOME50”*.
 
-### 4️⃣ LLM (Gemini) configuration – the **LlmAgent**
+### 4️ LLM (Gemini) configuration – the **LlmAgent**
 ```python
 root_agent = Agent(
     name="root_agent",
@@ -96,7 +95,7 @@ root_agent = Agent(
 - **Instruction**: provides a high‑level persona.
 - **Tools**: the three functions above are registered; the LLM can invoke them by name.
 
-### 5️⃣ Root **Workflow** – the App entry point
+### 5️ Root **Workflow** – the App entry point
 ```python
 app = App(
     root_agent=root_agent,
@@ -129,5 +128,4 @@ app = App(
 
 ---
 
-*This walkthrough was generated automatically to help you understand the scaffolded project and the new discount‑redemption feature.*
 >>>>>>> 2e1ba9a (Initial commit with discount redemption feature and updated README)
