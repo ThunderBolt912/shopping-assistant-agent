@@ -120,11 +120,8 @@ app = App(
 
 ---
 
-## Next steps you may want to explore
+## Next steps for future feature update
 - Persist `redeemed_codes` to a database or Cloud Storage so the one‑time guarantee survives restarts.
-- Add a tool that looks up product inventory or applies the discount to a cart.
-- Configure CI with the `pre‑commit` hooks you just added (`pre-commit install`).
-- Run `agents-cli playground` to interactively test the workflow.
 
 ---
 
